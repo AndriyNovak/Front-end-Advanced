@@ -1,0 +1,25 @@
+#block-todolist{
+	background: lightblue;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding:20px;
+	margin: 20px;
+}
+.wrap{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-flow: column nowrap;
+}
+.btnAdd{
+	cursor: pointer;
+	margin-left: 10px;
+	background: yellow;
+	padding: 5px;
+	border: 1px solid red;
+	width: 100px;
+}
+.inputText{
+	padding: 5px;
+}
