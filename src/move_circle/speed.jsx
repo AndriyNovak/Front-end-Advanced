@@ -8,8 +8,8 @@ export class speedClass {
         this.ctx.strokeRect(0,0,this.canvas.width,this.canvas.height);
         
         
-            this.position_X = 100;
-            this.position_Y = 100;
+            this.position_X = this.canvas.width/5;
+            this.position_Y = this.canvas.height/5;
             this.speed_X = 0;
             this.speed_Y = 0;
         // var W = 87;
@@ -25,78 +25,98 @@ export class speedClass {
         
        
         
-        document.addEventListener('keydown', function(e) {
-        if (e.keyCode == 87) {
-            this.W = true;            
-            this.speed_Y = - 0.1;
-            this.position_Y +=  this.speed_Y;
-            
-            console.log("W");
-            
-        }
-        if (e.keyCode == 83) {
-            this.S = true;
-            this.speed_Y =  0.1;
-            this.position_Y +=  this.speed_Y;
-            
-        }
-        if (e.keyCode == 65) {
-            this.A = true;
-            this.speed_X = - 0.1;
-            this.position_X +=  this.speed_X;
-            
-        }
-        if (e.keyCode == 68) {
-            this.D = true;
-            this.speed_X =  0.1;
-            this.position_X +=  this.speed_X;
-           
-        }
-        });
+        
+         this.example(this.position_X,this.position_Y);
+        
+        
+        
+        
+    }
 
+
+    example(position_X,position_Y){
         
-        document.addEventListener('keyup', function(e) {
-        if (e.keyCode == 87) {
-            this.W = false;
+        document.addEventListener('keydown', function(e) {
+            
+            if (e.keyCode == 87) {
+                this.W = true;            
+                this.speed_Y = - 5;
+                position_Y +=  this.speed_Y;
+                
+                // console.log(position_Y);
+                // console.log(this.speed_Y);
+                // console.log("W");
+                
+            }
+            if (e.keyCode == 83) {
+                this.S = true;
+                this.speed_Y =  5;
+                position_Y +=  this.speed_Y;
+                
+            }
+            if (e.keyCode == 65) {
+                this.A = true;
+                this.speed_X = - 5;
+                position_X +=  this.speed_X;
+                
+            }
+            if (e.keyCode == 68) {
+                this.D = true;
+                this.speed_X = 5;
+                position_X +=  this.speed_X;
+               
+            }
+            });
+    
+            
+            document.addEventListener('keyup', function(e) {
+            if (e.keyCode == 87) {
+                this.W = false;
+               
+            }
+            if (e.keyCode == 83) {
+                this.S = false;
+            }
+            if (e.keyCode == 65) {
+                this.A = false;
+            }
+            if (e.keyCode == 68) {
+                this.D = false;
+            } 
+            });
            
-        }
-        if (e.keyCode == 83) {
-            this.S = false;
-        }
-        if (e.keyCode == 65) {
-            this.A = false;
-        }
-        if (e.keyCode == 68) {
-            this.D = false;
-        } 
-        });
-         
-        
-        
-        setInterval(()=>(this.animate(this.position_X,this.position_Y)),125);
-        
+           
+                setInterval(()=>{
+                    if (position_X > this.canvas.width || position_Y > this.canvas.height ||
+                        position_X < 0 || position_Y < 0){
+                        console.log("Game over");          
+                        position_X = this.canvas.width/5;
+                        position_Y = this.canvas.height/5;
+                        this.animate(position_X,position_Y)
+                    } else {
+                        this.animate(position_X,position_Y)
+                    }
+                    
+                },20);
+                    
+            
     }
 
     animate(position_X,position_Y){ 
        
-    //     console.log("x = " + position_X);
-    //     console.log("y = " + position_Y);
         this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
-        this.ctx.strokeRect(0,0,this.canvas.width,this.canvas.height);
-        
         this.ctx.beginPath();
-        this.ctx.arc( position_X , position_Y , 20, 0, Math.PI * 2, true); 
-        this.ctx.closePath();
+        this.ctx.lineWidth =5;
+        this.ctx.strokeStyle = "blue";
+        this.ctx.fillStyle = "lightgray";
+        this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height); 
+        this.ctx.strokeRect(0,0,this.canvas.width,this.canvas.height);
+        this.ctx.stroke();  
+        
+        this.ctx.arc( position_X , position_Y , 20, 0, Math.PI * 2, true);        
         this.ctx.fillStyle = "green";
         this.ctx.fill();
 
-        
-       
-          
     }
-
-
-    
-
 
 }

@@ -159,8 +159,8 @@ class App extends React.Component {
                                   color={item.color}/>
                     ))}
                 </ul>
-                <button onClick={() => this.moveCircle()}>Move Circle</button>
-               
+                <button onClick={() => this.moveCircle()}>Start Circle</button>
+                
             </div>
         )
     }
@@ -169,7 +169,7 @@ class App extends React.Component {
         // this.circle = new CircleGame();
         this.circle = new speedClass();
     }
-
+   
 
     palayGame(){
         this.game = new Game();
