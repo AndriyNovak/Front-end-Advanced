@@ -16,16 +16,16 @@ export class speedClass {
          
         
        
-        setInterval(this.animate(this.obj.position_X,this.obj.position_Y,this.obj.speed_X,this.obj.speed_Y),155)
+        setInterval(()=>(this.animate(this.obj.position_X,this.obj.position_Y,this.obj.speed_X,this.obj.speed_Y)),25)
         
     }
 
     animate(position_X,position_Y,speed_X,speed_Y){ 
        
-        console.log("x = " + position_X);
-        console.log("y = " + position_Y);
-        console.log("speed_X = " + speed_X);
-        console.log("speed_Y = " + speed_Y);
+        // console.log("x = " + position_X);
+        // console.log("y = " + position_Y);
+        // console.log("speed_X = " + speed_X);
+        // console.log("speed_Y = " + speed_Y);
          
         this.ctx.clearRect(0,0,this.canvas.width,this.canvas.height);
         this.ctx.strokeRect(0,0,this.canvas.width,this.canvas.height);
@@ -34,8 +34,8 @@ export class speedClass {
         var S = 83;
         var A = 65;
         var D = 68;
-        let x = position_X;
-        let y = position_Y;
+        this.x = position_X;
+        this.y = position_Y;
         
         let arr = [];
 
@@ -49,28 +49,28 @@ export class speedClass {
         document.addEventListener('keydown', function(e) {
         if (e.keyCode === W) {
             keys.W = true;            
-            speed_Y = - 1;
-            y +=  speed_Y;
+            speed_Y = - 0.1;
+            this.y +=  speed_Y;
             
             console.log("W");
-            console.log("y = " + y);
+            
         }
         if (e.keyCode == S) {
             keys.S = true;
             speed_Y =  0.1;
-            y +=  speed_Y;
+            this.y +=  speed_Y;
             
         }
         if (e.keyCode == A) {
             keys.A = true;
             speed_X = - 0.1;
-            x +=  speed_X;
+            this.x +=  speed_X;
             
         }
         if (e.keyCode == D) {
             keys.D = true;
             speed_X =  0.1;
-            x +=  speed_X;
+            this.x +=  speed_X;
            
         }
         });
@@ -95,11 +95,11 @@ export class speedClass {
         
         
         this.ctx.beginPath();
-        this.ctx.arc( x , y , 20, 0, Math.PI * 2, true); 
+        this.ctx.arc( this.x , this.y , 20, 0, Math.PI * 2, true); 
         this.ctx.closePath();
         this.ctx.fillStyle = "blue";
         this.ctx.fill();
-       
+        
        
           
     }
