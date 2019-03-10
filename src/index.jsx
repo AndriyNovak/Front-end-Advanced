@@ -122,8 +122,8 @@ import * as ReactDOM from "react-dom";
 
 import { TodoItem } from './components/TodoItem.jsx';
 
-// import { CircleGame } from './move_circle/move_circle.jsx';
-import { speedClass } from './move_circle/speed.jsx';
+import { CircleGame } from './move_circle/move_circle.jsx';
+// import { speedClass } from './move_circle/speed.jsx';
 
 import { Game } from './game/Game.jsx';
 // import { GameItem } from './game/GameItem.jsx';
@@ -166,8 +166,8 @@ class App extends React.Component {
     }
 
     moveCircle(){
-        // this.circle = new CircleGame();
-        this.circle = new speedClass();
+        this.circle = new CircleGame();
+        // this.circle = new speedClass();
     }
    
 

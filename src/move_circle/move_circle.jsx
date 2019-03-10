@@ -10,11 +10,12 @@ export class CircleGame {
         this.obj = {
                 position_X : 100,
                 position_Y : 100,
-                speed : 0
+                speed_X : 0,
+                speed_Y :0
         }
         
-        this.Circle_controller = new Circle_controller("blue",this.obj.position_X,this.obj.position_Y,this.obj.speed);
-        this.Circle_controller.animate(this.ctx);
+        this.Circle_controller = new Circle_controller("green",this.obj.position_X,this.obj.position_Y,this.ctx);
+        // this.Circle_controller.animate(this.ctx);
         
         
         
