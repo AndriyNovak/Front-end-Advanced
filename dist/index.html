@@ -1,9 +1,30 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title>Server Novak</title>
-</head>
-<body>
-	
-<script type="text/javascript" src="main.build.js"></script></body>
+    <head></head>
+    <body>
+        <div id="root"></div>
+        <canvas style="border: 1px solid red" id="game"></canvas>
+        <canvas style="border: 1px solid blue" id="packmen"></canvas>
+        <audio src="a-sen_feat_ego_-_ne_rvi_gitara_dushu_dmitry_air_remix.mp3" controls></audio>
+
+
+
+        <canvas style="border: 1px solid blue" id="myCanvas" width="300px" height="300px"></canvas>
+        <script>
+         var img = new Image();
+         var canvas = document.getElementById("myCanvas"), 
+                context = canvas.getContext("2d");
+                 
+            var img = new Image();
+            img.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQa9yVQw9zCvwOqCmZepj6tsy_qpzRt0Wk8-7w9e47JrbLmwJSO";
+            img.onload = function() {
+                 
+                var pattern = context.createPattern(img, "no-repeat");
+                context.fillStyle = pattern;
+                context.fillRect(10, 10, 150, 150);
+                context.strokeRect(10, 10, 150, 150);
+            };  
+         
+         
+            </script>
+    <script type="text/javascript" src="main.build.js"></script></body>
 </html>

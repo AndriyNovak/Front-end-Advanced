@@ -1,0 +1,27 @@
+#Players  :first-child{
+    color:blue;
+    li:first-child{
+        color: orange;
+    }
+}
+#Players{
+    animation-duration: 3s;
+    animation-name: myAnimatin;
+  }
+  
+  @keyframes myAnimatin {
+    from {
+    //   transform: rotate(360deg);
+      color:green;
+    }
+  
+    to {
+        color: chartreuse;
+    //   transform: rotate(0deg)
+    }
+  }
+
+
+  #game{
+      margin: 30px;
+  }
