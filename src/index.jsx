@@ -1,5 +1,7 @@
+
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+<<<<<<< HEAD
 import { TodoItem } from './components/TodoItem.jsx';
 import {Game} from "./game/Game.jsx";
 import {agent} from "./utils/agent.jsx";
@@ -8,21 +10,34 @@ import {Packmen} from "./game/Packmen/Packmen.jsx";
 import {reduser} from './store/playerStore.jsx';
 import {Provider} from 'react-redux';
 
+=======
+import {WeatherShow} from "./components/WeatherShow.jsx";
+>>>>>>> 31cbff9574a6997f47aac153abf56776d179f053
 
-class App extends React.Component {
 
-    constructor(props, state) {
-        super(props, state);
+const API = "f961192c9968a368935d2bd839a82ff7";
 
+<<<<<<< HEAD
         // this.game = new Game();
        
+=======
+ class App extends React.Component {
+    constructor(props,state){
+        super(props,state);
+>>>>>>> 31cbff9574a6997f47aac153abf56776d179f053
         this.state = {
-            list: [
-                { name: 'aaaa', color: 'red' },
-                { name: 'bbbb', color: 'green', bold: true },
-            ]
-        };
+                    
+                    city: undefined,
+                    temperature: undefined,
+                    pressure: undefined,
+                    humidity: undefined,
+                    description: undefined,
+                    wind: undefined,                
+                    error: undefined,
+                    bool:false
+                }
     }
+<<<<<<< HEAD
 
     render() {
         return (
@@ -58,34 +73,97 @@ class App extends React.Component {
     async loadAll(){
         const players = await agent.Players.getAll();
         this.setState({players});
+=======
+    async request(event)  {
+        const CITY_NAME = event.target.value;        
+        console.log(CITY_NAME);
+        if (CITY_NAME){
+            const WeatherRequest = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API}&units=metric`);
+            const data = await WeatherRequest.json();
+            console.log(data);
+            console.log("Місто: " + data.name);
+            console.log("Температура: " + data.main.temp.toFixed() + " град.");
+            console.log("Тиск: " + (data.main.pressure/1.333).toFixed() + " мм.рт.ст.");
+            console.log("Вологість: " + data.main.humidity + " %");            
+            console.log("Опади: " + data.weather[0].description);
+            console.log("Швидкість вітру: " + (data.wind.speed*3.6).toFixed() + " км/год");
+           
+            this.setState({
+                city: "Місто: " + data.name,
+                temperature: "Температура: " + data.main.temp.toFixed() + " град.",
+                pressure: "Тиск: " + (data.main.pressure/1.333).toFixed() + " мм.рт.ст.",
+                humidity: "Вологість: " + data.main.humidity + " %",
+                description: "Опади: " + data.weather[0].description,
+                wind: "Швидкість вітру: " + (data.wind.speed*3.6).toFixed() + " км/год",                
+                error: undefined
+            });
+                  
+        }else {          
+            this.setState ({
+                city: undefined,
+                temperature: undefined,
+                pressure: undefined,
+                humidity: undefined,
+                description: undefined,
+                wind: undefined,                
+                error: <div className="container">Помилка. Ви не правильно ввели місто.</div>
+                });
+        }
+    }       
+>>>>>>> 31cbff9574a6997f47aac153abf56776d179f053
+        
+   
+    getMethod(event){
+        this.request(event)
+    }
+    
+    hendlerOnClick(event){
+        event.preventDefault();
+        this.setState({
+            bool:true
+        })
         
     }
 
-    storeData(userName) {
-        window.localStorage.setItem('config', JSON.stringify({userName, aaa: 1111}));
-        window.sessionStorage.setItem('config', JSON.stringify({userName, aaa: 1111}));
+
+    render() {
+        return (
+                <div>
+                    {this.props.name}
+                    <form className="container" >
+                        <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Введіть дані в указані поля</label>
+                        <input type="text"  onChange = {()=>this.getMethod(event)} name="city" className="form-control" id="exampleInputEmail1" placeholder="Введіть місто"></input>
+                        
+                        </div>
+                
+                        <button  className="btn btn-success" onClick={()=>this.hendlerOnClick(event)}>Показать погоду </button>
+                    </form>
+                    {
+                    this.state.bool ? 
+                    <WeatherShow 
+                        city = { this.state.city }
+                        temperature = { this.state.temperature }
+                        pressure = { this.state.pressure }
+                        humidity = { this.state.humidity }
+                        description = { this.state.description }
+                        wind = { this.state.wind }                
+                        error = { this.state.error }
+                    />
+                    :null
+                    }
+                    
+
+                    
+                </div> 
+                
+        );
+           
     }
+<<<<<<< HEAD
 
-    playGame() {
-
-    }
-
-    newColor() {
-        // this.game.changeColor();
-    }
-
-    addItem() {
-        this.setState({list: [
-            ...this.state.list,
-            {name: 'cccc', color: 'pink'}
-        ]});
-    }
-
-    removeItem(i) {
-        this.state.list.splice(i, 1);
-        this.setState({list: [...this.state.list]})
-    }
-
+=======
+>>>>>>> 31cbff9574a6997f47aac153abf56776d179f053
     
 }
 
