@@ -5,6 +5,9 @@ import {Game} from "./game/Game.jsx";
 import {agent} from "./utils/agent.jsx";
 import {Players} from "./components/Players.jsx";
 import {Packmen} from "./game/Packmen/Packmen.jsx";
+import {reduser} from './store/playerStore.jsx';
+import {Provider} from 'react-redux';
+
 
 class App extends React.Component {
 
@@ -12,7 +15,7 @@ class App extends React.Component {
         super(props, state);
 
         // this.game = new Game();
-      
+       
         this.state = {
             list: [
                 { name: 'aaaa', color: 'red' },
@@ -25,6 +28,9 @@ class App extends React.Component {
         return (
             <div className="container">
                 {/* <Players/> */}
+                
+                <Provider store={}/>
+
 
 
               {/* <input type="text" onChange={(e) => this.storeData(e.target.value)/> */}
@@ -43,7 +49,7 @@ class App extends React.Component {
                 // </ul> */}
 
 
-                <Packmen/>
+                {/* <Packmen/> */}
                
             </div>
         )
@@ -79,6 +85,12 @@ class App extends React.Component {
         this.state.list.splice(i, 1);
         this.setState({list: [...this.state.list]})
     }
+
+    
 }
+
+ 
+
+
 
 ReactDOM.render(<App/>, document.getElementById('root'));

@@ -67,10 +67,12 @@ export class ModelPackmen {
     enemy(ctx,canvas_w,canvas_h){
        
        
-        this.enemy_position_x += -1;
+        this.enemy_position_x += 1;
         
         this.posEnemyCurrent();
         
+        
+
         if (this.direction ===0){
             this.enemy_position_y += -1;
            
@@ -91,11 +93,14 @@ export class ModelPackmen {
 
     posEnemyCurrent(){
         // this.direction = direction;
-        if (this.enemy_position_y % 20 === 0 || this.enemy_position_x % 20 === 0 ){
+        // while(this.isWin_X() || this.isWin_Y){
+            if (this.enemy_position_y % 20 == 0 || this.enemy_position_x % 20 == 0 ){
             this.direction =  Math.floor(Math.random() * 4);
             
            
-        }
+            }
+        // }
+        
          
     }
     
