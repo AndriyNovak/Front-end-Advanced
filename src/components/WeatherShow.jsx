@@ -12,6 +12,7 @@ export class WeatherShow extends React.Component {
           
             <div>
                     
+<<<<<<< HEAD
                 <div className = "container " >
                     <div className="iconWeather">
                         <img className="" src={`http://openweathermap.org/img/w/${this.props.icon}.png`} alt={ this.props.icon}/>
@@ -26,6 +27,15 @@ export class WeatherShow extends React.Component {
                         <p>{ this.props.wind }</p>
                     </div>
                     
+=======
+                <div className = "container">
+                    <p>{ this.props.city }</p> 
+                    <p>{ this.props.temperature }</p>
+                    <p>{ this.props.pressure }</p>
+                    <p>{ this.props.humidity }</p>
+                    <p>{ this.props.description }</p>
+                    <p>{ this.props.wind }</p>
+>>>>>>> 386328b4d1d1d644634fbd421160aa7517397327
                 </div>
             
                 <p className = "error">{this.props.error}</p>

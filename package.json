@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "javascript-state-machine": "^3.1.0",
+    "mobx": "^5.9.0",
+    "mobx-react": "^5.4.3",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-redux": "^6.0.1",
